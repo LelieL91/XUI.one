@@ -8,8 +8,7 @@ echo -e "\nChecking that minimal requirements are ok"
 # Ensure the OS is compatible with the launcher (Debian Only)
 if [ -f /etc/os-release ]; then
   OS=$(grep -w ID /etc/os-release | sed 's/^.*=//')
-#  VER=$(grep -w VERSION_ID /etc/os-release | sed 's/^.*=//' | tr -d '"')
-  VER=$(grep -w VERSION_ID /etc/os-release | sed 's/^.*=//')
+  VER=$(grep -w VERSION_ID /etc/os-release | sed 's/^.*=//' | tr -d '"')
   ARCH=$(uname -m)
 else
   echo "Sorry, this OS is not supported by this XtreamUI.one installer."
@@ -18,7 +17,6 @@ fi
 
 echo "Detected : $OS  $VER  $ARCH"
 #[[ "$OS" = "debian" && ( "$VER" = "11" || "$VER" = "12" ) && "$ARCH" == "x86_64" ]] || { echo "Sorry, this OS is not supported by this XtreamUI.one installer."; exit 1; }
-[[ "$OS" = "ubuntu" && ( "$VER" = "22.04" || "$VER" = "24.04" ) && "$ARCH" == "x86_64" ]] || { echo "Sorry, this OS is not supported by this XtreamUI.one installer."; exit 1; }
 
 # Define Build functions
 INSTALL_XUI(){
