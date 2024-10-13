@@ -12,7 +12,8 @@
 
 ## Run install/update script
 
-wget -O - https://raw.githubusercontent.com/LelieL91/XUI.one/main/install.sh | bash
+- using curl: `curl -s 'https://raw.githubusercontent.com/LelieL91/XUI.one/main/install.sh' | bash`
+- using wget: `wget --no-check-certificate -q 'https://raw.githubusercontent.com/LelieL91/XUI.one/main/install.sh' -O - | bash`
 
 ---
 

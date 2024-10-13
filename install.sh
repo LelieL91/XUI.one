@@ -83,7 +83,7 @@ Choose an option: "
     4) UPDATE_PHP ; INSTALL_MENU ;;
     0) exit 0 ;;
     *) echo -e "Wrong option."; INSTALL_MENU ;;
-  esac
+esac
 }
 
 INSTALL_MENU
