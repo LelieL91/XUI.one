@@ -45,12 +45,12 @@ UPDATE_NGINX(){
   wget --no-check-certificate --content-disposition 'https://github.com/LelieL91/XUI.one/releases/download/1.5.13/xui_nginx_update.tar.gz' -O '/root/XUI-updater/xui_nginx_update.tar.gz' -q --show-progress
   tar -xf "/root/XUI-updater/xui_nginx_update.tar.gz" -C "/root/XUI-updater"
   # Copy binaries into XUI.one directories and remove updater folder
-  cp '/root/XUI-updater/nginx' '/home/xui/bin/nginx/sbin/nginx'
-  cp '/root/XUI-updater/nginx_rtmp' '/home/xui/bin/nginx_rtmp/sbin/nginx_rtmp'
+  cp -u '/root/XUI-updater/nginx' '/home/xui/bin/nginx/sbin/nginx'
+  cp -u '/root/XUI-updater/nginx_rtmp' '/home/xui/bin/nginx_rtmp/sbin/nginx_rtmp'
   rm -rf '/root/XUI-updater'
   # Fix binaries owner and permissions
-  chmod 550 '/home/xui/bin/nginx/sbin/nginx' '/home/xui/bin/nginx_rtmp/sbin/nginx_rtmp'
   chown xui:xui '/home/xui/bin/nginx/sbin/nginx' '/home/xui/bin/nginx_rtmp/sbin/nginx_rtmp'
+  chmod 550 '/home/xui/bin/nginx/sbin/nginx' '/home/xui/bin/nginx_rtmp/sbin/nginx_rtmp'
   # Remove old pid files and start XUI.one
   [[ -f '/home/xui/bin/nginx/logs/nginx.pid' ]] && rm /home/xui/bin/nginx/logs/nginx.pid
   [[ -f '/home/xui/bin/nginx_rtmp/logs/nginx.pid' ]] && rm /home/xui/bin/nginx_rtmp/logs/nginx.pid
