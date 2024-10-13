@@ -16,7 +16,7 @@ else
 fi
 
 echo "Detected : $OS  $VER  $ARCH"
-#[[ "$OS" = "debian" && ( "$VER" = "11" || "$VER" = "12" ) && "$ARCH" == "x86_64" ]] || { echo "Sorry, this OS is not supported by this XtreamUI.one installer."; exit 1; }
+[[ "$OS" = "debian" && ( "$VER" = "11" || "$VER" = "12" ) && "$ARCH" == "x86_64" ]] || { echo "Sorry, this OS is not supported by this XtreamUI.one installer."; exit 1; }
 
 # Define Build functions
 INSTALL_XUI(){
@@ -43,7 +43,7 @@ UPDATE_NGINX(){
   # Download and extract 
   mkdir -p "/root/XUI-updater"
   wget --no-check-certificate --content-disposition 'https://github.com/LelieL91/XUI.one/releases/download/1.5.13/xui_nginx_update.tar.gz' -O '/root/XUI-updater/xui_nginx_update.tar.gz' -q --show-progress
-  tar -xf "/root/XUI-updater/xui_nginx_update.tar.gz" -C "/root/XUI-updater"
+  tar -xf '/root/XUI-updater/xui_nginx_update.tar.gz' -C '/root/XUI-updater'
   # Copy binaries into XUI.one directories and remove updater folder
   cp '/root/XUI-updater/nginx' '/home/xui/bin/nginx/sbin'
   cp '/root/XUI-updater/nginx_rtmp' '/home/xui/bin/nginx_rtmp/sbin'
@@ -52,10 +52,10 @@ UPDATE_NGINX(){
   chown xui:xui '/home/xui/bin/nginx/sbin/nginx' '/home/xui/bin/nginx_rtmp/sbin/nginx_rtmp'
   chmod 550 '/home/xui/bin/nginx/sbin/nginx' '/home/xui/bin/nginx_rtmp/sbin/nginx_rtmp'
   # Remove old pid files and start XUI.one
-  [[ -f '/home/xui/bin/nginx/logs/nginx.pid' ]] && rm /home/xui/bin/nginx/logs/nginx.pid
-  [[ -f '/home/xui/bin/nginx_rtmp/logs/nginx.pid' ]] && rm /home/xui/bin/nginx_rtmp/logs/nginx.pid
+  [[ -f '/home/xui/bin/nginx/logs/nginx.pid' ]] && rm '/home/xui/bin/nginx/logs/nginx.pid'
+  [[ -f '/home/xui/bin/nginx_rtmp/logs/nginx.pid' ]] && rm '/home/xui/bin/nginx_rtmp/logs/nginx.pid'
   systemctl start xuione && sleep 5
-  echo "Nginx has been successfully updated!!"
+  echo 'Nginx has been successfully updated!!'
 }
 
 UPDATE_PHP(){
