@@ -77,12 +77,12 @@ Welcome to XUI.one Debian Installer by LelieL91
 Choose an option: "
   read a
   case $a in
-    1) INSTALL_XUI ; menu ;;
-    2) UPDATE_XUI ; menu ;;
-    3) UPDATE_NGINX ; menu ;;
-    4) UPDATE_PHP ; menu ;;
+    1) INSTALL_XUI ; INSTALL_MENU ;;
+    2) UPDATE_XUI ; INSTALL_MENU ;;
+    3) UPDATE_NGINX ; INSTALL_MENU ;;
+    4) UPDATE_PHP ; INSTALL_MENU ;;
     0) exit 0 ;;
-    *) echo -e "${arr_bcolor[Red]}Wrong option."$colorClear; menu ;;
+    *) echo -e "Wrong option."; INSTALL_MENU ;;
   esac
 }
 
