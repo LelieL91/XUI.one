@@ -82,8 +82,8 @@ Choose an option: "
     3) UPDATE_NGINX ; INSTALL_MENU ;;
     4) UPDATE_PHP ; INSTALL_MENU ;;
     0) exit 0 ;;
-    *) echo -e "Wrong option."; INSTALL_MENU ;;
-esac
+    *) echo -e "Wrong option." ; INSTALL_MENU ;;
+  esac
 }
 
 INSTALL_MENU
