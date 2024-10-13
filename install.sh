@@ -36,10 +36,10 @@ UPDATE_XUI(){
 
 UPDATE_NGINX(){
   echo "Starting Nginx Updating process!!"
-  # Stop XUI.one and backup old binaries
+  # Stop XUI.one and backup old binaries (only 1st time)
   systemctl stop xuione && sleep 5
-  cp '/home/xui/bin/nginx/sbin/nginx' '/home/xui/bin/nginx/sbin/nginx_old'
-  cp '/home/xui/bin/nginx_rtmp/sbin/nginx_rtmp' '/home/xui/bin/nginx_rtmp/sbin/nginx_rtmp_old'
+  cp -n '/home/xui/bin/nginx/sbin/nginx' '/home/xui/bin/nginx/sbin/nginx_old'
+  cp -n '/home/xui/bin/nginx_rtmp/sbin/nginx_rtmp' '/home/xui/bin/nginx_rtmp/sbin/nginx_rtmp_old'
   # Download and extract 
   mkdir -p "/root/XUI-updater"
   wget --no-check-certificate --content-disposition 'https://github.com/LelieL91/XUI.one/releases/download/1.5.13/xui_nginx_update.tar.gz' -O '/root/XUI-updater/xui_nginx_update.tar.gz' -q --show-progress
@@ -60,9 +60,10 @@ UPDATE_NGINX(){
 
 UPDATE_PHP(){
   echo "Update PHP Function Triggered!! EMPTY"
-  # Check if folder exist /home/xui/bin/php
-  # Make backup: cp -R '/home/xui/bin/php' '/home/xui/bin/php.bak'
+#  Check if folder exist /home/xui/bin/php
+#  Make backup: cp -R '/home/xui/bin/php' '/home/xui/bin/php.bak'
 #  tar -xf "/root/xuione_php_latest.tar.gz" -C "/home/xui/bin"
+# sudo cp -r xui.so /home/xui/bin/php/lib/php/extensions/no-debug-non-zts-20190902/xui.so >/dev/null 2>&1
 }
 
 # Requirements
