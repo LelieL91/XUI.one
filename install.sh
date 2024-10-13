@@ -85,3 +85,5 @@ Choose an option: "
     *) echo -e "${arr_bcolor[Red]}Wrong option."$colorClear; menu ;;
   esac
 }
+
+INSTALL_MENU
