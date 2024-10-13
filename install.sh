@@ -20,13 +20,15 @@ echo "Detected : $OS  $VER  $ARCH"
 
 # Define Build functions
 INSTALL_XUI(){
-  apt update >/dev/null 2>&1
-  apt install software-properties-common ca-certificates lsb-release apt-transport-https >/dev/null 2>&1
-  [ -f "/usr/bin/python3" ] || { apt -y install python3 python3-dev unzip >/dev/null 2>&1; }
-  [ -f "/usr/bin/python" ] || { apt -y install python-is-python3 >/dev/null 2>&1; }
-  [ -f "/usr/bin/sudo" ] || { apt -y install sudo >/dev/null 2>&1; }
+  echo -e "Installing Installer OS dependancies"
+  apt update && apt install software-properties-common ca-certificates lsb-release apt-transport-https
+  [ -f "/usr/bin/python3" ] || { echo -e "Missing Python3! Installing..."; apt -y install python3 python3-dev unzip; }
+  [ -f "/usr/bin/python" ] || { echo -e "Missing Python3 requirement! Installing..."; apt -y install python-is-python3; }
+  [ -f "/usr/bin/sudo" ] || { echo -e "Missing sudo! Installing..."; apt -y install sudo; }
+  echo -e "Downloading Latest XUI.one release"
   wget --no-check-certificate --content-disposition 'https://github.com/LelieL91/XUI.one/releases/download/1.5.13/xui.tar.gz' -O '/root/xui.tar.gz' -q --show-progress
   wget --no-check-certificate --content-disposition 'https://github.com/LelieL91/XUI.one/blob/main/install-xui.py' -O '/root/install-xui.py' -q --show-progress
+  echo -e "Running XUI.one Installer"
   python3 '/root/install-xui.py'
 }
 
