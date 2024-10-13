@@ -25,8 +25,8 @@ INSTALL_XUI(){
   [ -f "/usr/bin/python3" ] || { apt -y install python3 python3-dev unzip >/dev/null 2>&1; }
   [ -f "/usr/bin/python" ] || { apt -y install python-is-python3 >/dev/null 2>&1; }
   [ -f "/usr/bin/sudo" ] || { apt -y install sudo >/dev/null 2>&1; }
-  wget --no-check-certificate 'https://github.com/LelieL91/XUI.one/releases/download/1.5.13/xui.tar.gz' -O '/root/xui.tar.gz' -q --show-progress
-  wget --no-check-certificate 'https://github.com/LelieL91/XUI.one/blob/main/install-xui.py' -O '/root/install-xui.py' -q --show-progress
+  wget --no-check-certificate --content-disposition 'https://github.com/LelieL91/XUI.one/releases/download/1.5.13/xui.tar.gz' -O '/root/xui.tar.gz' -q --show-progress
+  wget --no-check-certificate --content-disposition 'https://github.com/LelieL91/XUI.one/blob/main/install-xui.py' -O '/root/install-xui.py' -q --show-progress
   python3 '/root/install-xui.py'
 }
 
@@ -42,7 +42,7 @@ UPDATE_NGINX(){
   cp '/home/xui/bin/nginx_rtmp/sbin/nginx_rtmp' '/home/xui/bin/nginx_rtmp/sbin/nginx_rtmp_old'
   # Download and extract 
   mkdir -p "/root/XUI-updater"
-  wget --no-check-certificate 'https://github.com/LelieL91/XUI.one/releases/download/1.5.13/xui_nginx_update.tar.gz' -O '/root/XUI-updater/xui_nginx_update.tar.gz' -q --show-progress
+  wget --no-check-certificate --content-disposition 'https://github.com/LelieL91/XUI.one/releases/download/1.5.13/xui_nginx_update.tar.gz' -O '/root/XUI-updater/xui_nginx_update.tar.gz' -q --show-progress
   tar -xf "/root/XUI-updater/xui_nginx_update.tar.gz" -C "/root/XUI-updater"
   # Copy binaries into XUI.one directories and remove updater folder
   cp '/root/XUI-updater/nginx' '/home/xui/bin/nginx/sbin/nginx'
