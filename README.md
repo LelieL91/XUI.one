@@ -17,3 +17,5 @@ wget -O - https://raw.githubusercontent.com/LelieL91/XUI.one/main/install.sh | b
 ---
 
 ### Credits ♥ [ [![](https://img.shields.io/badge/amidevous-%23121011.svg?style=for-the-badge?style=flat-square&logo=github&logoColor=white)](https://github.com/amidevous/xui.one) ] - [ [![](https://img.shields.io/badge/DRM_Scripts-%23121011.svg?style=for-the-badge?style=flat-square&logo=github&logoColor=white)](https://github.com/DRM-Scripts/XUI-One) ] - [ [![](https://img.shields.io/badge/emre1393-%23121011.svg?style=for-the-badge?style=flat-square&logo=github&logoColor=white)](https://github.com/emre1393/xtreamui_mirror) ] ♥
+
+---
