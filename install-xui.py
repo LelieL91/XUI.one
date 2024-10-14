@@ -64,14 +64,6 @@ if __name__ == "__main__":
         sys.exit(1)
     
     printc("XUI", col.OKGREEN, 2)
-    #rHost = "127.0.0.1" ; rServerID = 1 ; rUsername = generate() ; rPassword = generate()
-    #rDatabase = "xui"
-    #rPort = 3306
-    rHost = input("Enter DB Host: ")
-    rPort = input("Enter DB Port: ")
-    rDatabase = input("Enter DB Name: ")
-    rUsername = input("Enter DB Username: ")
-    rPassword = input("Enter DB Password: ")
 
     if os.path.exists("/home/xui/"):
         printc("XUI Directory Exists!")
@@ -100,8 +92,8 @@ if __name__ == "__main__":
     try: subprocess.check_output("getent passwd xui".split())
     except:
         printc("Creating user")
-#        os.system("sudo adduser --system --shell /bin/false --group --disabled-login xui >/dev/null 2>&1")
-        os.system("sudo adduser --system --shell /bin/false xui >/dev/null 2>&1")
+        os.system("sudo adduser --system --shell /bin/false --group --disabled-login xui >/dev/null 2>&1")
+#        os.system("sudo adduser --system --shell /bin/false xui >/dev/null 2>&1")
     if not os.path.exists("/home/xui >/dev/null 2>&1"): os.mkdir("/home/xui")
     
     ##################################################
@@ -121,10 +113,15 @@ if __name__ == "__main__":
             sys.exit(1)
     
     ##################################################
-    # MYSQL                                          #
+    # MariaDB                                          #
     ##################################################
     
-    printc("Configuring MySQL")
+    printc("Configuring Remote MariaDB")
+    rHost = input("Enter DB Host: ")
+    rPort = input("Enter DB Port: ")
+    rDatabase = input("Enter DB Name : ")
+    rUsername = input("Enter DB Username : ")
+    rPassword = input("Enter DB Password : ")
     rRet = os.system('sudo mysql -u "%s" -p"%s" -h "%s" -P %s -D "%s" -e \"SELECT VERSION();\"' % (rUsername, rPassword, rHost, rPort, rDatabase))
     if rRet != 0:
         while True:
@@ -134,9 +131,9 @@ if __name__ == "__main__":
             rDatabase = input("Enter DB Name: ")
             rUsername = input("Enter DB Username: ")
             rPassword = input("Enter DB Password: ")
-            rRet = os.system('mysql -u "%s" -p"%s" -h "%s" -P %s -D "%s" -e \"SELECT VERSION();\" >/dev/null 2>&1' % (rUsername, rPassword, rHost, rPort, rDatabase))
+            rRet = os.system('mysql -u "%s" -p"%s" -h "%s" -P %s -D "%s" -e \"SELECT VERSION();\"' % (rUsername, rPassword, rHost, rPort, rDatabase))
             if rRet == 0: break
-    os.system('sudo mysql -u "%s" -p"%s" -h "%s" -P %s %s < "/home/xui/bin/install/database.sql"' % (rUsername, rPassword, rHost, rPort, rDatabase))
+    os.system('sudo mysql -u "%s" -p"%s" -h "%s" -P %s "%s" < "/home/xui/bin/install/database.sql"' % (rUsername, rPassword, rHost, rPort, rDatabase))
     rConfigData = rConfig % (rHost, rDatabase, rPort, rUsername, rPassword)
     rFile = io.open("/home/xui/config/config.ini", "w", encoding="utf-8")
     rFile.write(rConfigData)
@@ -242,7 +239,7 @@ if __name__ == "__main__":
     printc("Installation completed!", col.OKGREEN, 2)
     printc("Continue Setup: http://%s/%s" % (getIP(), rCode))
     print(" ")
-    printc("Your mysql credentials have been saved to:")
+    printc("Your MariaDB credentials have been saved to:")
     printc(rPath + "/credentials.txt")
     print(" ")
     printc("Please move this file somewhere safe!")
