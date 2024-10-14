@@ -217,10 +217,10 @@ if __name__ == "__main__":
     os.system("sudo /home/xui/status 1 >/dev/null 2>&1")
     time.sleep(10)
     os.system("sudo wget --no-check-certificate https://github.com/LelieL91/XUI.one/releases/download/1.5.13/xui_crack.tar.gz -qO /root/XUI-Installer/xui_crack.tar.gz >/dev/null 2>&1")
-    os.system("sudo tar -xf /root/XUI-Installer/xui_crack.tar.gz >/dev/null 2>&1")
+    os.system("sudo tar -xf /root/XUI-Installer/xui_crack.tar.gz -C /root/XUI-Installer >/dev/null 2>&1")
     os.system("sudo systemctl stop xuione >/dev/null 2>&1")
-    os.system("sudo cp -r license /home/xui/config/license >/dev/null 2>&1")
-    os.system("sudo cp -r xui.so /home/xui/bin/php/lib/php/extensions/no-debug-non-zts-20190902/xui.so >/dev/null 2>&1")
+    os.system("sudo cp -r /root/XUI-Installer/license /home/xui/config/license >/dev/null 2>&1")
+    os.system("sudo cp -r /root/XUI-Installer/xui.so /home/xui/bin/php/lib/php/extensions/no-debug-non-zts-20190902/xui.so >/dev/null 2>&1")
     os.system('sudo sed -i "s/^license.*/license     =   \"cracked\"/g" /home/xui/config/config.ini >/dev/null 2>&1')
     os.system("sudo systemctl start xuione >/dev/null 2>&1")
     # License patch section end
