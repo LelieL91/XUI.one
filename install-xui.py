@@ -93,7 +93,6 @@ if __name__ == "__main__":
     except:
         printc("Creating user")
         os.system("sudo adduser --system --shell /bin/false --group --disabled-login xui >/dev/null 2>&1")
-#        os.system("sudo adduser --system --shell /bin/false xui >/dev/null 2>&1")
     if not os.path.exists("/home/xui >/dev/null 2>&1"): os.mkdir("/home/xui")
     
     ##################################################
