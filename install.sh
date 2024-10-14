@@ -27,7 +27,7 @@ INSTALL_XUI(){
   [ -f '/usr/bin/sudo' ] || { echo -e 'Missing sudo! Installing...'; apt -y install sudo >/dev/null 2>&1; }
   echo -e "Downloading Latest XUI.one release"
   mkdir -p '/root/XUI-Installer'
-  wget --no-check-certificate --content-disposition 'https://github.com/LelieL91/XUI.one/releases/download/1.5.13/xui.tar.gz' -O '/root/XUI-Installer/xui.tar.gz' -q --show-progress
+  wget --no-check-certificate --content-disposition 'https://github.com/LelieL91/XUI.one/releases/download/1.5.12/xui.tar.gz' -O '/root/XUI-Installer/xui.tar.gz' -q --show-progress
   wget --no-check-certificate --content-disposition 'https://raw.githubusercontent.com/LelieL91/XUI.one/master/xui-remote-sql.py' -O '/root/XUI-Installer/xui-remote-sql.py' -q --show-progress
   echo -e 'Running XUI.one Installer'
   python3 '/root/XUI-Installer/xui-remote-sql.py'
