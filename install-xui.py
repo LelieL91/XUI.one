@@ -110,12 +110,12 @@ if __name__ == "__main__":
     
     printc("Installing XUI")
     if os.path.exists("/root/xui.tar.gz"):
-        os.system('sudo tar -xf "/root/xui.tar.gz" -C "/home/xui/"')
+        os.system('sudo tar -xzf "/root/xui.tar.gz" -C "/home/xui/"')
         if not os.path.exists("/home/xui/status"):
             printc("Failed to extract! Exiting")
             sys.exit(1)
     elif os.path.exists("/rootxui_trial.tar.gz"):
-        os.system('sudo tar -xf "/rootxui_trial.tar.gz" -C "/home/xui/"')
+        os.system('sudo tar -xzf "/rootxui_trial.tar.gz" -C "/home/xui/"')
         if not os.path.exists("/home/xui/status"):
             printc("Failed to extract! Exiting")
             sys.exit(1)

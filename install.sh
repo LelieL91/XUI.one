@@ -27,7 +27,7 @@ INSTALL_XUI(){
   [ -f "/usr/bin/sudo" ] || { echo -e "Missing sudo! Installing..."; apt -y install sudo >/dev/null 2>&1; }
   echo -e "Downloading Latest XUI.one release"
   wget --no-check-certificate --content-disposition 'https://github.com/LelieL91/XUI.one/releases/download/1.5.13/xui.tar.gz' -O '/root/xui.tar.gz' -q --show-progress
-  wget --no-check-certificate --content-disposition 'https://github.com/LelieL91/XUI.one/blob/main/install-xui.py' -O '/root/install-xui.py' -q --show-progress
+  wget --no-check-certificate --content-disposition 'https://raw.githubusercontent.com/LelieL91/XUI.one/master/install-xui.py' -O '/root/install-xui.py' -q --show-progress
   echo -e "Running XUI.one Installer"
   python3 '/root/install-xui.py'
 }
