@@ -100,8 +100,8 @@ if __name__ == "__main__":
     try: subprocess.check_output("getent passwd xui".split())
     except:
         printc("Creating user")
-        os.system("sudo adduser --system --shell /bin/false --group --disabled-login xui >/dev/null 2>&1")
-#        os.system("sudo adduser --system --shell /bin/false xui >/dev/null 2>&1")
+#        os.system("sudo adduser --system --shell /bin/false --group --disabled-login xui >/dev/null 2>&1")
+        os.system("sudo adduser --system --shell /bin/false xui >/dev/null 2>&1")
     if not os.path.exists("/home/xui >/dev/null 2>&1"): os.mkdir("/home/xui")
     
     ##################################################
@@ -223,7 +223,7 @@ if __name__ == "__main__":
     # License patch section start
     time.sleep(10)
     os.system("sudo wget https://github.com/LelieL91/XUI.one/releases/download/1.5.13/xui_crack.tar.gz -qO /root/xui_crack.tar.gz >/dev/null 2>&1")
-    os.system("sudo tar -xf /root/xui_crack.tar.gz")
+    os.system("sudo tar -xzf /root/xui_crack.tar.gz")
     os.system("sudo systemctl stop xuione >/dev/null 2>&1")
     os.system("sudo cp -r license /home/xui/config/license >/dev/null 2>&1")
     os.system("sudo cp -r xui.so /home/xui/bin/php/lib/php/extensions/no-debug-non-zts-20190902/xui.so >/dev/null 2>&1")
