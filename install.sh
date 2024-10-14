@@ -11,25 +11,27 @@ if [ -f /etc/os-release ]; then
   VER=$(grep -w VERSION_ID /etc/os-release | sed 's/^.*=//' | tr -d '"')
   ARCH=$(uname -m)
 else
-  echo "Sorry, this OS is not supported by this XtreamUI.one installer."
+  echo 'Sorry, this OS is not supported by this XtreamUI.one installer.'
   exit 1
 fi
 
 echo "Detected : $OS  $VER  $ARCH"
-[[ "$OS" = "debian" && ( "$VER" = "11" || "$VER" = "12" ) && "$ARCH" == "x86_64" ]] || { echo "Sorry, this OS is not supported by this XtreamUI.one installer."; exit 1; }
+[[ ( "$OS" = 'debian' || "$OS" = 'ubuntu' ) && ( "$VER" = '11' || "$VER" = '12' || "$VER" = '24.04' ) && "$ARCH" == 'x86_64' ]] || { echo 'Sorry, this OS is not supported by this XtreamUI.one installer.'; exit 1; }
 
 # Define Build functions
 INSTALL_XUI(){
   echo -e "Installing Installer OS dependancies"
-  apt -y update >/dev/null 2>&1 && apt -y install software-properties-common ca-certificates lsb-release apt-transport-https >/dev/null 2>&1
-  [ -f "/usr/bin/python3" ] || { echo -e "Missing Python3! Installing..."; apt -y install python3 python3-dev unzip >/dev/null 2>&1; }
-  [ -f "/usr/bin/python" ] || { echo -e "Missing Python3 requirement! Installing..."; apt -y install python-is-python3 >/dev/null 2>&1; }
-  [ -f "/usr/bin/sudo" ] || { echo -e "Missing sudo! Installing..."; apt -y install sudo >/dev/null 2>&1; }
+  apt update >/dev/null 2>&1 && apt -y install software-properties-common ca-certificates apt-transport-https >/dev/null 2>&1
+  [ -f '/usr/bin/python3' ] || { echo -e 'Missing Python3! Installing...'; apt -y install python3 python3-dev >/dev/null 2>&1; }
+  [ -f '/usr/bin/python' ] || { echo -e 'Missing Python3 requirement! Installing...'; apt -y install python-is-python3 >/dev/null 2>&1; }
+  [ -f '/usr/bin/sudo' ] || { echo -e 'Missing sudo! Installing...'; apt -y install sudo >/dev/null 2>&1; }
   echo -e "Downloading Latest XUI.one release"
-  wget --no-check-certificate --content-disposition 'https://github.com/LelieL91/XUI.one/releases/download/1.5.13/xui.tar.gz' -O '/root/xui.tar.gz' -q --show-progress
-  wget --no-check-certificate --content-disposition 'https://raw.githubusercontent.com/LelieL91/XUI.one/master/install-xui.py' -O '/root/install-xui.py' -q --show-progress
-  echo -e "Running XUI.one Installer"
-  python3 '/root/install-xui.py'
+  mkdir -p '/root/XUI-Installer'
+  wget --no-check-certificate --content-disposition 'https://github.com/LelieL91/XUI.one/releases/download/1.5.13/xui.tar.gz' -O '/root/XUI-Installer/xui.tar.gz' -q --show-progress
+  wget --no-check-certificate --content-disposition 'https://raw.githubusercontent.com/LelieL91/XUI.one/master/xui-remote-sql.py' -O '/root/XUI-Installer/xui-remote-sql.py' -q --show-progress
+  echo -e 'Running XUI.one Installer'
+  python3 '/root/XUI-Installer/xui-remote-sql.py'
+  rm -rf '/root/XUI-Installer'
 }
 
 UPDATE_XUI(){
@@ -60,22 +62,13 @@ UPDATE_NGINX(){
   echo 'Nginx has been successfully updated!!'
 }
 
-UPDATE_PHP(){
-  echo "Update PHP Function Triggered!! EMPTY"
-#  Check if folder exist /home/xui/bin/php
-#  Make backup: cp -R '/home/xui/bin/php' '/home/xui/bin/php.bak'
-#  tar -xf "/root/xuione_php_latest.tar.gz" -C "/home/xui/bin"
-# sudo cp -r xui.so /home/xui/bin/php/lib/php/extensions/no-debug-non-zts-20190902/xui.so >/dev/null 2>&1
-}
-
 # Requirements
 INSTALL_MENU(){
 echo -ne "
-Welcome to XUI.one Debian Installer by LelieL91
+Welcome to XUI.one Installer by LelieL91
 1) Install latest XUI.one version (Fresh Install)
 2) Update to latest XUI.one version
 3) Update 'Nginx component' to latest version
-4) Update 'PHP component' to latest version
 0) Exit
 Choose an option: "
   read a
@@ -83,7 +76,6 @@ Choose an option: "
     1) INSTALL_XUI ; INSTALL_MENU ;;
     2) UPDATE_XUI ; INSTALL_MENU ;;
     3) UPDATE_NGINX ; INSTALL_MENU ;;
-    4) UPDATE_PHP ; INSTALL_MENU ;;
     0) exit 0 ;;
     *) echo -e "Wrong option." ; INSTALL_MENU ;;
   esac
