@@ -90,20 +90,11 @@ if __name__ == "__main__":
     printc("Installing XUI")
     if os.path.exists("/root/XUI-Installer/xui.tar.gz"):
         os.system('sudo tar -zxf "/root/XUI-Installer/xui.tar.gz" -C "/home/xui/" >/dev/null 2>&1')
-        # Update PHP7.4 with PHP8 backports by Amidevous
-        printc("Running PHP Patching")
-        os.system('sudo wget --no-check-certificate https://raw.githubusercontent.com/amidevous/xui.one/master/build-php.sh -O /root/XUI-Installer/build-php.sh > /dev/null 2>&1')
-        os.system('cd /root && sudo bash /root/XUI-Installer/build-php.sh > /dev/null 2>&1')
-        os.system('sudo rm -rf /root/XUI-Installer/build-php.sh > /dev/null 2>&1')
         if not os.path.exists("/home/xui/status"):
             printc("Failed to extract! Exiting")
             sys.exit(1)
     elif os.path.exists("/root/XUI-Installer/xui_trial.tar.gz"):
         os.system('sudo tar -zxf "/root/XUI-Installer/xui.tar.gz" -C "/home/xui/" >/dev/null 2>&1')
-        # Update PHP7.4 with PHP8 backports by Amidevous
-        os.system('sudo wget --no-check-certificate https://raw.githubusercontent.com/amidevous/xui.one/master/build-php.sh -O /root/XUI-Installer/build-php.sh > /dev/null 2>&1')
-        os.system('cd /root && sudo bash /root/XUI-Installer/build-php.sh > /dev/null 2>&1')
-        os.system('sudo rm -rf /root/XUI-Installer/build-php.sh > /dev/null 2>&1')
         if not os.path.exists("/home/xui/status"):
             printc("Failed to extract! Exiting")
             sys.exit(1)
