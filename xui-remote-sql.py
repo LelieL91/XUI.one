@@ -5,7 +5,6 @@ if sys.version_info.major != 3:
     print("Please run with python3.")
     sys.exit(1)
 
-rPath = os.path.dirname(os.path.realpath(__file__))
 rPackages = ["cpufrequtils", "iproute2", "net-tools", "dirmngr", "gpg-agent", "libmaxminddb0", "libmaxminddb-dev", "mmdb-bin", "libcurl4", "libgeoip-dev", "libxslt1-dev", "libonig-dev", "e2fsprogs", "wget", "mariadb-client", "sysstat", "alsa-utils", "v4l-utils", "mcrypt", "certbot", "iptables-persistent", "libjpeg-dev", "libpng-dev", "php-ssh2", "xz-utils", "zip", "unzip"]
 rRemove = ["mysql-server"]
 rConfig='; XUI Configuration\n; -----------------\n; Your username and password will be encrypted and\n; saved to the \'credentials\' file in this folder\n; automatically.\n;\n; To change your username or password, modify BOTH\n; below and XUI will read and re-encrypt them.\n\n[XUI]\nhostname    =   "%s"\ndatabase    =   "%s"\nport        =   %s\nserver_id   =   1\nlicense     =   ""\n\n[Encrypted]\nusername    =   "%s"\npassword    =   "%s"'
@@ -218,7 +217,7 @@ if __name__ == "__main__":
     os.system("sudo /home/xui/bin/php/bin/php /home/xui/includes/cli/startup.php >/dev/null 2>&1")
     time.sleep(10)
     
-    rFile = io.open(rPath + "/credentials.txt", "w", encoding="utf-8")
+    rFile = io.open("/root/credentials.txt", "w", encoding="utf-8")
     rFile.write("MariaDB Host: %s:%s" % (rHost, rPort))
     rFile.write("MariaDB DB Name: %s" % (rDatabase))
     rFile.write("MariaDB Username: %s\nMariaDB Password: %s" % (rUsername, rPassword))
@@ -229,6 +228,6 @@ if __name__ == "__main__":
     printc("Continue Setup: http://%s/%s" % (getIP(), rCode))
     print(" ")
     printc("Your MariaDB credentials have been saved to:")
-    printc(rPath + "/credentials.txt")
+    printc("/root/credentials.txt")
     print(" ")
     printc("Please move this file somewhere safe!")
