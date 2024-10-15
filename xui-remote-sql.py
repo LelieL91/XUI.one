@@ -228,7 +228,7 @@ if __name__ == "__main__":
     printc("Installation completed!", col.OKGREEN, 2)
     printc("Continue Setup: http://%s/%s" % (getIP(), rCode))
     print(" ")
-    printc("Your mysql credentials have been saved to:")
+    printc("Your MariaDB credentials have been saved to:")
     printc(rPath + "/credentials.txt")
     print(" ")
     printc("Please move this file somewhere safe!")
