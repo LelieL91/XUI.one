@@ -218,8 +218,8 @@ if __name__ == "__main__":
     
     rFile = io.open("/root/credentials.txt", "w", encoding="utf-8")
     rFile.write("MariaDB Host: %s:%s" % (rHost, rPort))
-    rFile.write("MariaDB DB Name: %s" % (rDatabase))
-    rFile.write("MariaDB Username: %s\nMariaDB Password: %s" % (rUsername, rPassword))
+    rFile.write("\nMariaDB Database: %s" % (rDatabase))
+    rFile.write("\nMariaDB Username: %s\nMariaDB Password: %s" % (rUsername, rPassword))
     rFile.write("\nContinue Setup: http://%s/%s" % (getIP(), rCode))
     rFile.close()
     
