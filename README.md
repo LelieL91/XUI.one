@@ -25,10 +25,11 @@
 ## Post Install/Current Issues
 #### Debian 12 missing dependencies (XUI.one included PHP requirements): 
 - [x] libjpeg8_8d-1+deb7u1_amd64
-- [x] multiarch-support_2.28-10+deb10u4_amd64 (libssl pkg dep)
+- [x] multiarch-support_2.28-10+deb10u4_amd64
 - [x] libssl1.1_1.1.1w-0+deb11u1_amd64
 #### Default XUI.one Database Workaround (not all XUI.one tested):
-- [ ] current_timestamp() sent as string: change these table column to NULL
+- [ ] Problem: `current_timestamp()` sent as string
+<br>Change these table column default value from `current_timestamp()` to `NULL`
 <br>Tables: `lines`, `stream` - column: `updated`
 
 ---
