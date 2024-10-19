@@ -10,10 +10,26 @@
 
 ---
 
+### This is a work-in-progress repository made just for test and "forced" to work on Debian 12.
+### MariaDB/MySQL server was removed to allow just a remote database connection.
+
+---
+
 ## Run install/update script
 
 - using curl: `bash <(curl -s 'https://raw.githubusercontent.com/LelieL91/XUI.one/main/install.sh')`
 - using wget: `bash <(wget -q -O - 'https://raw.githubusercontent.com/LelieL91/XUI.one/main/install.sh')`
+
+---
+
+## Post Install/Current Issue
+#### Debian 12 missing dependencies: 
+- [ ] libjpeg8_8d-1+deb7u1_amd64
+- [ ] multiarch-support_2.28-10+deb10u4_amd64 (libssl pkg dep)
+- [ ] libssl1.1_1.1.1w-0+deb11u1_amd64
+#### Default XUI.one DB Workaround (not all tested):
+- [ ] current_timestamp() sent as string: change these table column to NULL
+<br>Tables: `lines`, `stream` - column: `updated`
 
 ---
 
