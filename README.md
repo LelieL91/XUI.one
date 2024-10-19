@@ -22,7 +22,7 @@
 
 ---
 
-## Post Install/Current Issue
+## Post Install/Current Issues
 #### Debian 12 missing dependencies: 
 - [ ] libjpeg8_8d-1+deb7u1_amd64
 - [ ] multiarch-support_2.28-10+deb10u4_amd64 (libssl pkg dep)
