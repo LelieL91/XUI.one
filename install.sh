@@ -22,7 +22,7 @@ echo "Detected : $OS  $VER  $ARCH"
 DEBIAN_DEPS(){
   # Download and extract 
   mkdir -p '/root/XUI-Deps'
-  wget --no-check-certificate --content-disposition 'https://github.com/LelieL91/XUI.one/releases/download/1.5.13/xui_deb_fix.tar.gz' -O '/root/XUI-Deps/xui.tar.gz' -q --show-progress
+  wget --no-check-certificate --content-disposition 'https://github.com/LelieL91/XUI.one/releases/latest/download/xui_deb_fix.tar.gz' -O '/root/XUI-Deps/xui.tar.gz' -q --show-progress
   tar -xf '/root/XUI-Deps/xui_nginx_update.tar.gz' -C '/root/XUI-Deps'
   # Install Debian packages
   dpkg -i '/root/XUI-Deps/libjpeg8_8d-1+deb7u1_amd64.deb' >/dev/null 2>&1
@@ -40,7 +40,7 @@ INSTALL_XUI(){
   [[ "$OS" == 'debian' && "$VER" == '12' ]] && { echo -e 'Debian 12 detected! Installing libraries...'; DEBIAN_DEPS; }
   echo -e 'Downloading Latest XUI.one release'
   mkdir -p '/root/XUI-Installer'
-  wget --no-check-certificate --content-disposition 'https://github.com/LelieL91/XUI.one/releases/download/1.5.13/xui.tar.gz' -O '/root/XUI-Installer/xui.tar.gz' -q --show-progress
+  wget --no-check-certificate --content-disposition 'https://github.com/LelieL91/XUI.one/releases/latest/download/xui.tar.gz' -O '/root/XUI-Installer/xui.tar.gz' -q --show-progress
   wget --no-check-certificate --content-disposition 'https://raw.githubusercontent.com/LelieL91/XUI.one/master/xui-remote-sql.py' -O '/root/XUI-Installer/xui-remote-sql.py' -q --show-progress
   echo -e 'Running XUI.one Installer'
   python3 '/root/XUI-Installer/xui-remote-sql.py'
@@ -59,7 +59,7 @@ UPDATE_NGINX(){
   cp -n '/home/xui/bin/nginx_rtmp/sbin/nginx_rtmp' '/home/xui/bin/nginx_rtmp/sbin/nginx_rtmp_old'
   # Download and extract 
   mkdir -p '/root/XUI-Updater'
-  wget --no-check-certificate --content-disposition 'https://github.com/LelieL91/XUI.one/releases/download/1.5.13/xui_nginx_update.tar.gz' -O '/root/XUI-Updater/xui_nginx_update.tar.gz' -q --show-progress
+  wget --no-check-certificate --content-disposition 'https://github.com/LelieL91/XUI.one/releases/latest/download/xui_nginx_update.tar.gz' -O '/root/XUI-Updater/xui_nginx_update.tar.gz' -q --show-progress
   tar -xf '/root/XUI-Updater/xui_nginx_update.tar.gz' -C '/root/XUI-Updater'
   # Copy binaries into XUI.one directories and remove updater folder
   cp '/root/XUI-Updater/nginx' '/home/xui/bin/nginx/sbin'
